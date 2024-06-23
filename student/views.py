@@ -66,16 +66,46 @@ def take_exam_view(request,pk):
     
     return render(request,'student/take_exam.html',{'course':course,'total_questions':total_questions,'total_marks':total_marks})
 
+# @login_required(login_url='studentlogin')
+# @user_passes_test(is_student)
+# def start_exam_view(request,pk):
+#     course=QMODEL.Course.objects.get(id=pk)
+#     questions=QMODEL.Question.objects.all().filter(course=course)
+#     if request.method=='POST':
+#         pass
+#     response= render(request,'student/start_exam.html',{'course':course,'questions':questions})
+#     response.set_cookie('course_id',course.id)
+#     return response
+
+
 @login_required(login_url='studentlogin')
 @user_passes_test(is_student)
-def start_exam_view(request,pk):
-    course=QMODEL.Course.objects.get(id=pk)
-    questions=QMODEL.Question.objects.all().filter(course=course)
-    if request.method=='POST':
+def start_exam_view(request, pk):
+    course = QMODEL.Course.objects.get(id=pk)
+    questions = QMODEL.Question.objects.filter(course=course)
+    if request.method == 'POST':
+        # Handle POST request if necessary
         pass
-    response= render(request,'student/start_exam.html',{'course':course,'questions':questions})
-    response.set_cookie('course_id',course.id)
+    response = render(request, 'student/start_exam.html', {
+        'course': course,
+        'questions': questions,
+        'exam_duration': course.duration  # Pass the duration to the template
+    })
+    response.set_cookie('course_id', course.id)
     return response
+
+
+@login_required(login_url='studentlogin')
+@user_passes_test(is_student)
+def exam_view(request, course_id):
+    course = QMODEL.Course.objects.get(pk=course_id)
+    questions = course.questions.all()
+    exam_duration = course.duration  # Assuming you have a duration field in your course model
+    return render(request, 'student/exam.html', {
+        'course': course,
+        'questions': questions,
+        'exam_duration': exam_duration
+    })
 
 
 @login_required(login_url='studentlogin')

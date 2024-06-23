@@ -1,38 +1,49 @@
-{% extends 'quiz/adminbase.html' %}
-{% load widget_tweaks %}
-{% block content %}
+{% extends 'quiz/adminbase.html' %} {% load widget_tweaks %} {% block content %}
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
-       <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  a:link {
-        text-decoration: none;
-      }
-    
+    .full-width {
+      width: 100%;
+      box-sizing: border-box; /* Ensures padding and border are included in the element's total width */
+      padding: 10px;
+      margin-bottom: 5px;
+    }
   </style>
 </head>
-<h2 style="text-align:center; color:blue;">ADD COURSE</h2>
-<form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;">
-    {%csrf_token%}
-    <div class="form-group">
-      <label for="course_name">Course Name</label>
-      {% render_field courseForm.course_name class="form-control" placeholder="Java" %}
 
-      <label for="question_number">Total Question</label>
-      {% render_field courseForm.question_number class="form-control" placeholder="10" %}
-
-      <label for="total_marks">Total Marks</label>
-      {% render_field courseForm.total_marks class="form-control" placeholder="50" %}
+<form method="POST" autocomplete="off">
+  <h4
+    class="text-center text-light p-2"
+    style="background: linear-gradient(to right, #006d8b, #005969)"
+  >
+    ADD NEW EXAM DETAILS
+  </h4>
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="course_name" class="form-label">Enter New Exam Name</label>
+    <div>{% render_field courseForm.course_name|attr:'class:full-width' %}</div>
+  </div>
+  <div class="mb-3">
+    <label for="question_number" class="form-label"
+      >Enter Total Number Of Questions</label
+    >
+    <div>
+      {% render_field courseForm.question_number|attr:'class:full-width' %}
     </div>
-    
-
-    <button type="submit" class="btn btn-primary">ADD</button>
-  </form>
-<br><br><br>
+  </div>
+  <div class="mb-3">
+    <label for="total_marks" class="form-label"
+      >Write Total Marks For Exam</label
+    >
+    <div>{% render_field courseForm.total_marks|attr:'class:full-width' %}</div>
+  </div>
+  <div class="mb-3">
+    <label for="duration" class="form-label"
+      >Enter Duration of the Exam (in minutes)</label
+    >
+    <div>{% render_field courseForm.duration|attr:'class:full-width' %}</div>
+  </div>
+  <button type="submit" class="btn btn-sm btn-outline-success w-100">
+    Add Exam
+  </button>
+</form>
 {% endblock content %}

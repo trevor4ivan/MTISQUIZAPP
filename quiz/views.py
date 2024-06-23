@@ -190,18 +190,29 @@ def admin_course_view(request):
     return render(request,'quiz/admin_course.html')
 
 
+#@login_required(login_url='adminlogin')
+# def admin_add_course_view(request):
+#     courseForm=forms.CourseForm()
+#     if request.method=='POST':
+#         courseForm=forms.CourseForm(request.POST)
+#         if courseForm.is_valid():        
+#             courseForm.save()
+#         else:
+#             print("form is invalid")
+#         return HttpResponseRedirect('/admin-view-course')
+#     return render(request,'quiz/admin_add_course.html',{'courseForm':courseForm})
+
 @login_required(login_url='adminlogin')
 def admin_add_course_view(request):
-    courseForm=forms.CourseForm()
-    if request.method=='POST':
-        courseForm=forms.CourseForm(request.POST)
+    courseForm = forms.CourseForm()
+    if request.method == 'POST':
+        courseForm = forms.CourseForm(request.POST)
         if courseForm.is_valid():        
             courseForm.save()
+            return HttpResponseRedirect('/admin-view-course')
         else:
             print("form is invalid")
-        return HttpResponseRedirect('/admin-view-course')
-    return render(request,'quiz/admin_add_course.html',{'courseForm':courseForm})
-
+    return render(request, 'quiz/admin_add_course.html', {'courseForm': courseForm})
 
 @login_required(login_url='adminlogin')
 def admin_view_course_view(request):
@@ -275,9 +286,6 @@ def admin_check_marks_view(request,pk):
     return render(request,'quiz/admin_check_marks.html',{'results':results})
     
 
-
-
-
 def aboutus_view(request):
     return render(request,'quiz/aboutus.html')
 
@@ -294,3 +302,13 @@ def contactus_view(request):
     return render(request, 'quiz/contactus.html', {'form':sub})
 
 
+def blog(request):
+    return render(request, 'quiz/blog.html')
+
+
+def client(request):
+    return render(request, 'quiz/client.html')
+
+
+def services(request):
+    return render(request, 'quiz/services.html')

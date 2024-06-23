@@ -2,51 +2,23 @@
 {% block content %}
 {%load static%}
 
-<head>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<div>
+  <h4 class="text-center pb-2 text-decoration-underline">Total Exams Available</h4>
+  <div class="row row-cols-1 row-cols-md-4 g-4">
 
-  <style media="screen">
-    a:link {
-      text-decoration: none;
-    }
-
-    h6 {
-      text-align: center;
-    }
-
-    .row {
-      margin: 100px;
-    }
-  </style>
-</head>
-<br><br>
-<div class="container">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h6 class="panel-title">Courses</h6>
+    {% for t in courses %}
+    <div class="col text-light">
+      <a class="" href="{% url 'take-exam' t.id  %}" style="text-decoration: none;">
+      <div class="card h-100 border-0 text-light" style="background: linear-gradient(to right, #035a69, #025169)"">
+        <div class="card-body">
+          <h3 class="card-title text-center">{{t.course_name}}</h3>
+          <button class="btn btn-sm btn-light w-100">START EXAM</button>
+        </div>
+      </div>
+    </a>
     </div>
-    <table class="table table-hover" id="dev-table">
-      <thead>
-        <tr>
-
-          <th>Exam Name</th>
-          
-          <th>Take Exam</th>
-        </tr>
-      </thead>
-      {% for t in courses %}
-      <tr>
-
-        <td> {{t.course_name}}</td>
-        
-        <td><a class="btn btn-danger btn-xs" href="{% url 'take-exam' t.id  %}"><span class="glyphicon glyphicon-circle-arrow-right"></span></a></td>
-      </tr>
-      {% endfor %}
-    </table>
+    {% endfor %}
+    </div>
   </div>
 </div>
-
-<br><br><br><br><br><br>
 {% endblock content %}

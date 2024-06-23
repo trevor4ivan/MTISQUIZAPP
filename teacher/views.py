@@ -58,18 +58,33 @@ def teacher_exam_view(request):
     return render(request,'teacher/teacher_exam.html')
 
 
+# @login_required(login_url='teacherlogin')
+# @user_passes_test(is_teacher)
+# def teacher_add_exam_view(request):
+#     courseForm=QFORM.CourseForm()
+#     if request.method=='POST':
+#         courseForm=QFORM.CourseForm(request.POST)
+#         if courseForm.is_valid():        
+#             courseForm.save()
+#         else:
+#             print("form is invalid")
+#         return HttpResponseRedirect('/teacher/teacher-view-exam')
+#     return render(request,'teacher/teacher_add_exam.html',{'courseForm':courseForm})
+
+
 @login_required(login_url='teacherlogin')
 @user_passes_test(is_teacher)
 def teacher_add_exam_view(request):
-    courseForm=QFORM.CourseForm()
-    if request.method=='POST':
-        courseForm=QFORM.CourseForm(request.POST)
-        if courseForm.is_valid():        
+    courseForm = QFORM.CourseForm()
+    if request.method == 'POST':
+        courseForm = QFORM.CourseForm(request.POST)
+        if courseForm.is_valid():
             courseForm.save()
+            return HttpResponseRedirect('/teacher/teacher-view-exam')
         else:
             print("form is invalid")
-        return HttpResponseRedirect('/teacher/teacher-view-exam')
-    return render(request,'teacher/teacher_add_exam.html',{'courseForm':courseForm})
+    return render(request, 'teacher/teacher_add_exam.html', {'courseForm': courseForm})
+
 
 @login_required(login_url='teacherlogin')
 @user_passes_test(is_teacher)

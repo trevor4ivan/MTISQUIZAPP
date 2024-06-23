@@ -1,54 +1,67 @@
-{% extends 'teacher/teacherbase.html' %}
-{% load widget_tweaks %}
+{% extends 'teacher/teacherbase.html' %} {% load widget_tweaks %}
+<br />
 {% block content %}
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
-       <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  a:link {
-        text-decoration: none;
-      }
-    
+    a:link {
+      text-decoration: none;
+    }
+
+    .full-width {
+      width: 100%;
+      box-sizing: border-box; /* Ensures padding and border are included in the element's total width */
+      padding: 10px;
+      margin-bottom: 5px;
+    }
   </style>
-</head>
-<h2 style="text-align:center; color:blue;">ADD QUESTION</h2>
-<form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;">
+
+  <h2 class="text-center text-light p-2" style="background-color: #00505e">
+    ADD QUESTION
+  </h2>
+  <form method="POST" autocomplete="off" class="mb-5 p-5">
     {%csrf_token%}
     <div class="form-group">
-        <label for="question">Course</label>
-      {% render_field questionForm.courseID|attr:'required:true' class="form-control"  %}
-        <br>
+      <label for="question"
+        >Select the exam or test you wish to add questions to.</label
+      >
+      <div class="mb-3">
+        {% render_field questionForm.courseID|attr:'class:full-width' %}
+      </div>
 
       <label for="question">Question</label>
-      {% render_field questionForm.question|attr:'required:true' class="form-control" placeholder="What is the currency of India ?" %}
-        <br>
+      <div class="mb-3">
+        {% render_field questionForm.question|attr:'class:full-width' %}
+      </div>
       <label for="question_number">Marks</label>
-      {% render_field questionForm.marks|attr:'required:true' class="form-control" placeholder="10" %}
-        <br>
+      <div class="mb-3">
+        {% render_field questionForm.marks|attr:'class:full-width' %}
+      </div>
       <label for="option1">Option 1</label>
-      {% render_field questionForm.option1|attr:'required:true' class="form-control" placeholder="Rupees" %}
-        <br>
+      <div class="mb-3">
+        {% render_field questionForm.option1|attr:'class:full-width' %}
+      </div>
       <label for="option2">Option 2</label>
-      {% render_field questionForm.option2|attr:'required:true' class="form-control" placeholder="Dollar" %}
-        <br>
+      <div class="mb-3">
+        {% render_field questionForm.option2|attr:'class:full-width' %}
+      </div>
       <label for="option3">Option 3</label>
-      {% render_field questionForm.option3|attr:'required:true' class="form-control" placeholder="Taka" %}
-        <br>
+      <div class="mb-3">
+        {% render_field questionForm.option3|attr:'class:full-width' %}
+      </div>
       <label for="option4">Option 4</label>
-      {% render_field questionForm.option4|attr:'required:true' class="form-control" placeholder="Euro" %}
-        <br>
+      <div class="mb-3">
+        {% render_field questionForm.option4|attr:'class:full-width' %}
+      </div>
       <label for="answer">Answer</label>
-      {% render_field questionForm.answer|attr:'required:true' class="form-control" %}
+      <div class="mb-3">
+        {% render_field questionForm.answer|attr:'class:full-width' %}
+      </div>
     </div>
-    
 
-    <button type="submit" class="btn btn-primary">ADD</button>
+    <button type="submit" class="btn btn-sm btn-outline-success w-100">
+      ADD QUESTION
+    </button>
   </form>
-<br><br><br>
-{% endblock content %}
+  {% endblock content %}
+</head>

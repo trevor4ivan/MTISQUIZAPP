@@ -1,55 +1,37 @@
-{% extends 'teacher/teacherbase.html' %}
-{% block content %}
-{%load static%}
+{% extends 'teacher/teacherbase.html' %} {% block content %} {%load static%}
 
-<head>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-  <style media="screen">
-    a:link {
-      text-decoration: none;
-    }
-
-    h6 {
-      text-align: center;
-    }
-
-    .row {
-      margin: 100px;
-    }
-  </style>
-</head>
-<br><br>
-<div class="container">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h6 class="panel-title">Exams</h6>
-    </div>
-    <table class="table table-hover" id="dev-table">
-      <thead>
-        <tr>
-
-          <th>Course Name</th>
-          <th>Total Question</th>
-          <th>Total Marks</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      {% for t in courses %}
+<div class="card">
+  <table class="table">
+    <h6
+      class="text-center text-light p-3"
+      style="background-color: rgb(1, 90, 106)"
+    >
+      All Exams List
+    </h6>
+    <thead>
       <tr>
-
-        <td> {{t.course_name}}</td>
-        <td>{{t.question_number}}</td>
-        <td>{{t.total_marks}}</td>
-        
-        <td><a class="btn btn-danger btn-xs" href="{% url 'delete-exam' t.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+        <th>Course Name</th>
+        <th>Total Question</th>
+        <th>Total Marks</th>
+        <th>Delete</th>
       </tr>
-      {% endfor %}
-    </table>
-  </div>
+    </thead>
+    {% for t in courses %}
+    <tr>
+      <td>{{t.course_name}}</td>
+      <td>{{t.question_number}}</td>
+      <td>{{t.total_marks}}</td>
+
+      <td>
+        <a
+          class="btn btn-sm btn-outline-danger"
+          href="{% url 'delete-exam' t.id  %}"
+          >Delete Exam</a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
 </div>
 
-<br><br><br><br><br><br>
 {% endblock content %}

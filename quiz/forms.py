@@ -2,6 +2,14 @@ from django import forms
 from django.contrib.auth.models import User
 from . import models
 
+class AdminForm(forms.ModelForm):
+    class Meta:
+        model=User
+        fields=['first_name','last_name','username','password']
+        widgets = {
+        'password': forms.PasswordInput()
+        }
+
 class ContactusForm(forms.Form):
     Name = forms.CharField(max_length=30)
     Email = forms.EmailField()
@@ -13,7 +21,7 @@ class TeacherSalaryForm(forms.Form):
 class CourseForm(forms.ModelForm):
     class Meta:
         model=models.Course
-        fields=['course_name','question_number','total_marks']
+        fields=['course_name','question_number','total_marks', "duration"]
 
 class QuestionForm(forms.ModelForm):
     

@@ -1,73 +1,388 @@
 <!DOCTYPE html>
-{% load widget_tweaks %}
-<html lang="en" dir="ltr">
+{% load static %} {% load widget_tweaks %}
+<html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <!-- site metas -->
+    <title>Ecoders-Home-page</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- owl carousel style -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.2.4/assets/owl.carousel.min.css"
+    />
+    <!-- bootstrap css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../static/styles/bootstrap.min.css"
+    />
+    <!-- style css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../static/styles/style.css"
+    />
+    <!-- Responsive-->
+    <link rel="stylesheet" href="../../static/styles/responsive.css" />
+    <!-- fevicon -->
+    <link rel="icon" href="../../static/image/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link
+      rel="stylesheet"
+      href="../../static/styles/jquery.mCustomScrollbar.min.css"
+    />
+    <!-- Tweaks for older IEs-->
+    <link
+      rel="stylesheet"
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    />
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" href="../../static/styles/owl.carousel.min.css" />
+    <link
+      rel="stylesheet"
+      href="../../static/styles/owl.theme.default.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+      media="screen"
+    />
     <style>
+      /* CSS to change the color of the hamburger icon */
+      .navbar-dark .navbar-toggler-icon {
+        color: black;
+      }
+      html,
+      body {
+        overflow-x: hidden;
+      }
 
-        form{
-           margin: 50px; 
-          
+      .custom-form {
+        max-width: 400px;
+        margin: 0 auto;
+        border-radius: 10px;
+        background-color: transparent;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+        font-size: 24px;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #0d0086;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        transform-origin: center;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+      }
+
+      input[type="submit"]:active {
+        transform: scale(0.95);
+      }
+      .main_header_section {
+        height: 100px;
+      }
+
+      @media screen and (max-width: 600px) {
+        .main_header_section {
+          height: auto;
         }
-
+      }
     </style>
   </head>
   <body>
-    {% include "quiz/navbar.html" %}
- 
+    <!--header section start -->
+    <div class="header_section bg-primary main_header_section">
+      <div class="">
+        <nav class="navbar navbar-expand-lg container">
+          <ul
+            class="nav d-flex justify-content-between align-items-center p-0 m-0 flex-wrap w-100"
+          >
+            <li class="nav-item">
+              <a class="logo" href="/">
+                <img
+                  src="../../static/image/school_logo3_no_bg.png"
+                  height="100px"
+                  width="100px"
+                />
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/adminclick">Admin</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/teacher/teacherclick"
+                >Teacher</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/student/studentlogin"
+                >Student</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/aboutus">About Us</a>
+            </li>
 
-
-<br><br><br>
-<h3 style="text-align: center;color: red;">STUDENT SIGNUP</h3>
-<form method="POST" autocomplete="off" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="username">Username</label>
-        {% render_field userForm.username|attr:'required:true'  class="form-control" placeholder="username" %}
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword4">Password</label>
-        {% render_field userForm.password|attr:'required:true'  class="form-control" placeholder="password" %}
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/contactus">Contact Us</a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
+    <!--header section end -->
 
-    <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="first_name">First Name</label>
-          {% render_field userForm.first_name|attr:'required:true'  class="form-control" placeholder="First Name" %}
-        </div>
-        <div class="form-group col-md-6">
-          <label for="last_name">Last Name</label>
-          {% render_field userForm.last_name|attr:'required:true'  class="form-control" placeholder="Last Name" %}
+    <!--about section start -->
+    <div class="about_section pt-5">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-6">
+            <h1 class="about_taital">
+              Student <span class="us_text">Signup</span>
+            </h1>
+            <form
+              method="POST"
+              autocomplete="off"
+              enctype="multipart/form-data"
+            >
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="username">Username</label>
+                {% render_field userForm.username|attr:'required:true' %}
+              </div>
+              <div class="form-group">
+                <label for="inputPassword4">Password</label>
+                {% render_field userForm.password|attr:'required:true' %}
+              </div>
+              <div class="form-group">
+                <label for="first_name">First Name</label>
+                {% render_field userForm.first_name|attr:'required:true' %}
+              </div>
+              <div class="form-group">
+                <label for="last_name">Last Name</label>
+                {% render_field userForm.last_name|attr:'required:true' %}
+              </div>
+              <div class="form-group">
+                <label for="mobile">Mobile</label>
+                {% render_field studentForm.mobile|attr:'required:true' %}
+              </div>
+              <div class="form-group">
+                <label for="address">Address</label>
+                {% render_field studentForm.address|attr:'required:true' %}
+              </div>
+              <div class="form-group">
+                <label for="profile_pic">Profile Picture</label>
+                {% render_field studentForm.profile_pic|attr:'required:true' %}
+              </div>
+              <input type="submit" value="Sign Up" />
+            </form>
+          </div>
         </div>
       </div>
+    </div>
+    <!--about section end -->
 
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="mobile">Mobile</label>
-          {% render_field studentForm.mobile|attr:'required:true'  class="form-control" placeholder="Mobile" %}
-        </div>
-        <div class="form-group col-md-6">
-          <label for="address">Address</label>
-          {% render_field studentForm.address|attr:'required:true'  class="form-control" placeholder="Address" %}
+    <!--newsletter section start -->
+    <div class="newsletter_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h1 class="newsletter_text">Subscribe Now</h1>
+            <p class="tempor_text">
+              dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            </p>
+          </div>
+          <div class="col-md-6">
+            <div class="mail_bt_main d-flex">
+              <input
+                type="text"
+                placeholder="Enter Tour Mail"
+                name="Enter Tour Mail"
+              />
+              <div class="subscribe_bt"><a href="#">SUBSCRIBE</a></div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+    <!--newsletter section end -->
 
-      <div class="form-row">
-        <div class="form-group col-md-12">
-          <label for="profile_pic">Profile Picture</label>
-          {% render_field studentForm.profile_pic|attr:'required:true' class="form-control" placeholder="" %}
+    <!--footer section start -->
+    <div class="footer_section layout_padding">
+      <div class="container">
+        <div class="address_main">
+          <div class="address_text">
+            <a href="#"
+              ><img src="../../static/image/map-icon.png" /><span
+                class="padding_left_15"
+                >Loram Ipusm hosting web</span
+              ></a
+            >
+          </div>
+          <div class="address_text">
+            <a href="#"
+              ><img src="../../static/image/call-icon.png" /><span
+                class="padding_left_15"
+                >+7586656566</span
+              ></a
+            >
+          </div>
+          <div class="address_text">
+            <a href="#"
+              ><img src="../../static/image/mail-icon.png" /><span
+                class="padding_left_15"
+                >demo@gmail.com</span
+              ></a
+            >
+          </div>
         </div>
-        
+        <div class="footer_section_2">
+          <div class="row">
+            <div class="col-lg-3 col-sm-6">
+              <h4 class="link_text">Useful link</h4>
+              <div class="footer_menu">
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="services.html">Services</a></li>
+                  <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <h4 class="link_text">web design</h4>
+              <p class="footer_text">
+                Lorem ipsum dolor sit amet, consectetur adipiscinaliquaL
+                oreadipiscing
+              </p>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <h4 class="link_text">social media</h4>
+              <div class="social_icon">
+                <ul>
+                  <li>
+                    <a href="#"><img src="../../static/image/fb-icon.png" /></a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><img src="../../static/image/twitter-icon.png"
+                    /></a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><img src="../../static/image/linkedin-icon.png"
+                    /></a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><img src="../../static/image/youtub-icon.png"
+                    /></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <h4 class="link_text">Our Branchs</h4>
+              <p class="footer_text_1">
+                Lorem ipsum dolor sit amet, consectetur
+                adipiscinaliquaLoreadipiscing
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+    <!--client section end -->
+    <!--copyright section start -->
+    <div class="copyright_section">
+      <div class="container">
+        <p class="copyright_text">
+          Copyright 2023 All Right Reserved By
+          <a href="https://html.design">Ecoders</a> Distributed by:
+          <a href="https://ecoders.in">ecoders</a>
+        </p>
+      </div>
+    </div>
+    <!--copyright section end -->
+    <!-- Javascript files-->
+    <script src="../../static/js/jquery.min.js"></script>
+    <script src="../../static/js/popper.min.js"></script>
+    <script src="../../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../../static/js/jquery-3.0.0.min.js"></script>
+    <script src="../../static/js/plugin.js"></script>
+    <!-- sidebar -->
+    <script src="../../static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../../static/js/custom.js"></script>
+    <!-- javascript -->
+    <script src="../../static/js/owl.carousel.js"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script
+      type="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2//2.0.0-beta.2.4/owl.carousel.min.js"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      window.jQuery ||
+        document.write(
+          '<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>'
+        );
+    </script>
+    <script src="../../static/js/popper.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
 
-
-    <button type="submit" class="btn btn-primary">Sign Up</button>
-  </form>
-
-
-<br><br>
-{% include "quiz/footer.html" %}
+    <script>
+      window.addEventListener("scroll", function () {
+        var header = document.querySelector(".header_section");
+        if (window.scrollY > 0) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+    </script>
   </body>
 </html>
